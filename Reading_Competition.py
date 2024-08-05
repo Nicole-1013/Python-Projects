@@ -10,11 +10,15 @@ pages_each_class_reads = pages_each_student_reads * students_in_each_class
 classrooms_in_the_school = int(input("How many classrooms are in the school?"))
 pages_read_schoolwide = pages_each_class_reads * classrooms_in_the_school
 students_in_school = students_in_each_class * classrooms_in_the_school
-
+#this gathers all the information that we need to do the page count calculations
 school_reading_goal = int(input("How many pages does the school aim to read?"))
 pages_needed_from_each_student = round(school_reading_goal / students_in_school)
+#This gathers the information to determine how many pages students need to read for
+#the goal
 
-print(pages_each_class_reads)
-print(pages_read_schoolwide)
+final_answer = '''There are {} pages being read in every class, {} pages being read
+schoolwide, and if the school wide reading goal is {} pages, then each
+student needs to read {} pages'''
 
-print(pages_needed_from_each_student)
+print(final_answer.format(pages_each_class_reads, pages_read_schoolwide, \
+school_reading_goal, pages_needed_from_each_student))
