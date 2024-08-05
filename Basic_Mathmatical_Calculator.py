@@ -12,3 +12,8 @@ addition_variable = numberOne + numberTwo
 subtraction_variable = numberOne - numberTwo
 multiplication_variable = numberOne * numberTwo
 division_variable = numberOne / numberTwo
+
+print(addition_variable)
+print(subtraction_variable)
+print(multiplication_variable)
+print(division_variable)
