@@ -20,7 +20,8 @@ exactly {} {} {}. The {} {} {} at the sight of them and
 decided to stay for a while. In this place, everyone
 loved to {}. The end!'''
 
-print(MadLib.format(adjective_1, place_1, noun_1, noun_1, nounToPlural, verb_1, adverb_1, number_1, adjective_2, noun_2, noun_1, adverb_1, verb_2, silly_word ))
+print(MadLib.format(adjective_1, place_1, noun_1, noun_1, nounToPlural, verb_1, \
+adverb_1, number_1, adjective_2, noun_2, noun_1, adverb_1, verb_2, silly_word ))
 
 
 
