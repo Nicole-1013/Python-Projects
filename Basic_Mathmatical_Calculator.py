@@ -4,16 +4,32 @@
 #Date: 08/05/24
 
 print("---------- BASIC CALCULATOR ----------")
-print("--------Enter two number inputs--------")
-numberOne = int(input("Enter: "))
-numberTwo = int(input("Enter: "))
+print("-------Enter two number inputs-------")
+print('''        ---------MENU----------
+               add
+               subtract
+               divide
+               multiply''')
+print("--------------------------------------")
+
+type_of_math = input("Math Type: ")
+numberOne = int(input("Enter Number: "))
+numberTwo = int(input("Enter Number: "))
+
 
 addition_variable = numberOne + numberTwo
 subtraction_variable = numberOne - numberTwo
 multiplication_variable = numberOne * numberTwo
 division_variable = numberOne / numberTwo
 
-print(addition_variable)
-print(subtraction_variable)
-print(multiplication_variable)
-print(division_variable)
+if type_of_math == 'add':
+    print(addition_variable)
+elif type_of_math == 'subtract':
+    print(subtraction_variable)
+elif type_of_math == 'divide':
+    print(division_variable)
+elif type_of_math == 'multiply':
+    print(multiplication_variable)
+else:
+    print("INVALID MATH TYPE")
+
