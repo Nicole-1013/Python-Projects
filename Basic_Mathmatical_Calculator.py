@@ -5,14 +5,14 @@
 
 print("---------- BASIC CALCULATOR ----------")
 print("-------Enter two number inputs-------")
-print('''        ---------MENU----------
+print('''        ------OPERATIONS-------
                add
                subtract
                divide
                multiply''')
 print("--------------------------------------")
 
-type_of_math = input("Math Type: ")
+type_of_math = input("Math Operation: ")
 numberOne = int(input("Enter Number: "))
 numberTwo = int(input("Enter Number: "))
 
