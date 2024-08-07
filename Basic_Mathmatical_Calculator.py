@@ -36,7 +36,7 @@ elif type_of_math == '/':
 elif type_of_math == '*':
     print(multiplication_variable)
 elif type_of_math == '**':
-    print(exoponent_variable)
+    print(exponent_variable)
 elif type_of_math == '//':
     print(floor_division_variable)
 else:
