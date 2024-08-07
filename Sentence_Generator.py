@@ -3,8 +3,9 @@
 #Date: 08/06/24
 noun_list = []
 
-for x in range(9):
+for x in range(10):
     noun = input("Input a noun: ")
     noun_list.append(noun)
 
-print(noun_list)
+for x in noun_list:
+    print(f'While I was watching my favorite TV show about the {x}, a {x} suddently appeared next to me! Almost as the {x} came to life from the TV!')
