@@ -16,12 +16,12 @@ number_of_small_pizzas = 0
 if party_size // large_pizza_capacity > 0:
     number_of_large_pizzas = party_size // large_pizza_capacity
     party_size = party_size % large_pizza_capacity
-
+#gets number of max amount of large pizzas, and remaining people to be accounted for
 
 if party_size // medium_pizza_capacity > 0:
      number_of_medium_pizzas = party_size // medium_pizza_capacity
      party_size = party_size % medium_pizza_capacity
-
+#gets number of max amount of medium pizzas and the remaining amount of people
 
 if party_size // small_pizza_capacity > 0:
      number_of_small_pizzas = party_size
