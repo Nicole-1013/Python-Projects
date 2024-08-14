@@ -2,7 +2,7 @@
 #Author: Nicole Galvan 
 #Date: 8/14/24
 
-user_number = int(input("Give me a number"))
+user_number = int(input("Lets check if this is a prime number!"))
 factor_list = []
 if user_number > 0:#first to check if the number is positive
     for x in range(2, user_number ):#iterates through every number to see if the number has factors
