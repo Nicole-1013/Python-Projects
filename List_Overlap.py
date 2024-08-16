@@ -25,5 +25,3 @@ for x in new_list:
         newer_list.append(x)
 
 print(newer_list)
-print(list_one)
-print(list_two)
