@@ -10,15 +10,16 @@ turns = 1
 letters_guessed = []  
 print(word)
 while turns <= 12:
+    print(" ".join(letters_guessed))
     print(" ".join(guesses))
     char = input("What guess would you like to make for turn " + str(turns))
     for x in word:
         if x == char:
             index = word.index(x)
-            print(index)
             guesses[index] = char
             word[index] = "_"
-            print(word)
+    if char not in word and char not in guesses:
+        letters_guessed.append(char)
     turns += 1
 
 
