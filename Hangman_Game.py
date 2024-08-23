@@ -6,21 +6,29 @@ import random
 word_list = ["cheese"]
 word = [x for x in random.choice(word_list)]
 guesses = ["_" for x in word]
+letters_guessed = [] 
 turns = 1
-letters_guessed = []  
+ 
 print(word)
 while turns <= 12:
     print(" ".join(letters_guessed))
     print(" ".join(guesses))
+
     char = input("What guess would you like to make for turn " + str(turns))
+    
     for x in word:
         if x == char:
             index = word.index(x)
             guesses[index] = char
             word[index] = "_"
+    
     if char not in word and char not in guesses:
         letters_guessed.append(char)
+    
+    if "_" not in guesses:
+        break
+    
     turns += 1
-
+print("Hooray! You discoved the word " + "".join(guesses) + "!")
 
 
