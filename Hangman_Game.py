@@ -3,17 +3,23 @@
 #Date: 8/22/24
 import random
 
-word_list = ["cheese", "duck", "book", "telephone"]
-word = random.choice(word_list)
-guesses = "_"*len(word)
+word_list = ["cheese"]
+word = [x for x in random.choice(word_list)]
+guesses = ["_" for x in word]
 turns = 1
 letters_guessed = []  
-
+print(word)
 while turns <= 12:
-    print(guesses)
-
+    print(" ".join(guesses))
+    char = input("What guess would you like to make for turn " + str(turns))
+    for x in word:
+        if x == char:
+            index = word.index(x)
+            print(index)
+            guesses[index] = char
+            word[index] = "_"
+            print(word)
     turns += 1
 
 
 
-print(word)
