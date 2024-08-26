@@ -5,36 +5,43 @@ import random
 
 def game():
     
-    word_list = ["cheese"]
-    word = [x for x in random.choice(word_list)]
+    word_list = ["Cheese"]
+    word = [x.lower() for x in random.choice(word_list)]
     guesses = ["_" for x in word]
     letters_guessed = [] 
-    turns = 1
- 
-    while turns <= 12:
-        print(" ".join(letters_guessed))
-        print(" ".join(guesses))
+    turns = 0
+    max_turns = 12
+
+    while turns <= max_turns:
+        
+        turns_left = max_turns - turns
+        print(f"You have '{turns_left}' turns left ")
+        print(f"Guessed letters: {' '.join(letters_guessed)}")
+        print("Word: " + " ".join(guesses))
 
         char = input("What guess would you like to make?").lower()
 
-        if char in letters_guessed:
+        if char in letters_guessed or char in guesses:
             print(f"You've already guessed '{char}'. Try a different letter.")
             continue
+        
+        if char in word:    
+            for index, letter in enumerate(word):
+                if letter == char:
+                    guesses[index] = char
+                    word[index] = "_"
     
-        for x in word:
-            if x == char:
-                index = word.index(x)
-                guesses[index] = char
-                word[index] = "_"
-    
-        if char not in word and char not in guesses:
+        else:
             letters_guessed.append(char)
     
         if "_" not in guesses:
+            print("Hooray! You discovered the word " + "".join(guesses) + "!")
             break
     
         turns += 1
-    print("Hooray! You discovered the word " + "".join(guesses) + "!")
+    if "_" in guesses:
+        print(f"Out of turns! The word was {''.join([x if x != '_' else word_list[0][i] for i, x in enumerate(guesses)])}. Better luck next time!")
+    
 
 game()
 game_on = True
