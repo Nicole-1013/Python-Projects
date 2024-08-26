@@ -5,19 +5,20 @@ import random
 
 def game():
     
-    word_list = ["Cheese"]
+    word_list = ["garden", "elephant", "dinosaur", "jewelry", "purple", "pencil", "mountain", "computer", "lightning", "castle", "warrior", "basket", "plane", "travel", "house"]
     word = [x.lower() for x in random.choice(word_list)]
     guesses = ["_" for x in word]
     letters_guessed = [] 
     turns = 0
     max_turns = 12
+    correct_word = tuple(word)
 
     while turns <= max_turns:
-        
         turns_left = max_turns - turns
-        print(f"You have '{turns_left}' turns left ")
-        print(f"Guessed letters: {' '.join(letters_guessed)}")
-        print("Word: " + " ".join(guesses))
+
+        print(f"🎯You have '{turns_left}' turns left🎯")
+        print(f"❓ Guessed letters: {' '.join(letters_guessed)} ❓")
+        print("🔤 Word: " + " ".join(guesses) + ' 🔤')
 
         char = input("What guess would you like to make?").lower()
 
@@ -40,7 +41,7 @@ def game():
     
         turns += 1
     if "_" in guesses:
-        print(f"Out of turns! The word was {''.join([x if x != '_' else word_list[0][i] for i, x in enumerate(guesses)])}. Better luck next time!")
+        print(f"Out of turns! The word was {"".join(correct_word)}. Better luck next time!")
     
 
 game()
