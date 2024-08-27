@@ -2,8 +2,12 @@
 #Author: Nicole Galvan
 #Date: 8/22/24
 import random
+import os
 
 #this is the hangman game code 
+def clear_console():
+    if os.name == 'nt':
+        os.system('cls')
 def game():
     
     #initialized variables
@@ -25,6 +29,7 @@ def game():
         char = input("What guess would you like to make?").lower()#user input of letter guesses
 
         if char in letters_guessed or char in guesses:#string appears if user has already guessed the letter, does not penalize the user
+            clear_console()
             print(f"You've already guessed '{char}'. Try a different letter.")
             continue
         
@@ -40,7 +45,8 @@ def game():
         if "_" not in guesses: #if statement for when the user guesses the word without running out of turns
             print("Hooray! You discovered the word " + "".join(guesses) + "!")
             break
-    
+
+        clear_console()
         turns += 1
     if "_" in guesses:#text appears if the user has run out of turns
         print(f"Out of turns! The word was {"".join(correct_word)}. Better luck next time!")
@@ -54,6 +60,7 @@ while game_on:
     user_input = input("Play Again? (y: yes, q: quit) ").lower()  # Convert input to lowercase for consistency
     
     if user_input == "y":
+        clear_console()
         game()
     elif user_input == "q":
         game_on = False
