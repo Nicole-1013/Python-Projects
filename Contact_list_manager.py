@@ -17,44 +17,40 @@ def clear_console():
 def add_contact():
     contact_name = input("What is the name of your new contact? ")
     contact_number = input("What is the number of your new contact? ")
-    yes_or_no = input("Do you wish to add an address to this contact? (y: yes, n: no)")
-    if yes_or_no == 'y':
-        address = input("Address: ")
-    else:
-        address = "none"
-    contacts[f"{contact_name}"] = [contact_number, address] 
+    address = input("Address (or leave blank): ") or "none"
+    contacts[contact_name] = [contact_number, address]
+    print(f"Added contact: {contact_name}")
 
 
 #prints the menu
 def print_menu():
-    print(" ----------MENU----------")
-    print('''     
-    |add) add new contact   
-    |delete) delete contact
-    |view) view someone's contact info
-    |show) show contact list
-    |address) add/change address to contact
-    |modify) modify contact
-    |quit)''')
+    print(''' 
+    ----------MENU----------
+    | add) Add new contact
+    | delete) Delete contact
+    | view) View contact info
+    | show) Show contact list
+    | modify) Modify contact
+    | quit) Exit''')
 
 
 #Deletes user indicated key and values from contacts dictionary
 def delete_contact():
     contact_name = check_for_contact()
-    del contacts[f'{contact_name}']
-    print("YOU HAVE DELETED THIS CONTACT")
+    del contacts[contact_name]
+    print(f"Deleted contact: {contact_name}")
 
 
-#Allows the user to view the information of one contact of their choosing
+#Allows the user to view the information of specific contact
 def view_contact():
     contact_name = check_for_contact()
-    print("Number: " + contacts.get(f'{contact_name}')[0] + "| Address: " + contacts.get(f'{contact_name}')[1])
+    print(f"Number: {contacts[contact_name][0]} | Address: {contacts[contact_name][1]}")
 
 
 #Shows all the contacts and all the values associated with the name (number, address) (address will be none until user adds it)
 def show_contacts():
-    for x,y in contacts.items():
-        print(f'Name: {x} | Number: {y[0]} | Address: {y[1]}')
+    for name,details in contacts.items():
+        print(f'Name: {name} | Number: {details[0]} | Address: {details[1]}')
 
 #modifys the users choice of number, name, or address of a contact
 def modify_contact():
@@ -62,7 +58,7 @@ def modify_contact():
     clear_console()
     
     while True:
-        choice = input("What would you like to modify? (n: name, num: number, a: address) ")
+        choice = input("What would you like to modify? (n: name, num: number, a: address) ").lower()
         if choice == "n":
             new_name = input("New name you wish to change this contact to: ")
             contacts[f"{new_name}"] = contacts[f"{name}"]
@@ -79,17 +75,15 @@ def modify_contact():
         else:
             print("INVALID OPTION: Try again")
             continue
+    print("YOU HAVE MODIFIED THIS CONTACT")
 
 def check_for_contact():
-    contact_name = input("Name of contact: ")
-    if contact_name in contacts:
-        return contact_name
-    while contact_name not in contacts:
+    while True:
+        name = input("Contact name: ")
+        if name in contacts:
+            return name
         clear_console()
-        print("ERROR: contact does not exist. Try Again.")
-        contact_name = input("Name of Contact: ")
-        continue
-    return contact_name
+        print("ERROR: Contact does not exist. Try again.")
 
 
 #main code working the menu and which functions to use
@@ -107,6 +101,8 @@ while user_input != 'q':
         show_contacts()
     elif user_input == "modify":
         modify_contact()
+    elif user_input == "q":
+        print("EXITED")
     else:
         print("INVALID OPTION: Try Again")
         continue
