@@ -23,23 +23,33 @@ def add_contact():
 
 #prints the menu
 def print_menu():
-    print("    -------MENU-------")
+    print(" ----------MENU----------")
     print('''     
     add) add new contact   
     delete) delete contact
     view) view someone's contact info
     show) show contact list
-    address) add address to contact
+    address) add/change address to contact
     quit)''')
 
 #Deletes user indicated key and values from contacts dictionary
 def delete_contact():
     contact_name = input("Name of the Contact: ")
+    while contact_name not in contacts:
+        clear_console()
+        print("ERROR: contact does not exist. Try Again.")
+        contact_name = input("Name of the Contact: ")
+        continue
     del contacts[f'{contact_name}']
 
 #Allows the user to view the information of one contact of their choosing
 def view_contact():
     contact_name = input("Name of Contact: ")
+    while contact_name not in contacts:
+        clear_console()
+        print("ERROR: contact does not exist. Try Again.")
+        contact_name = input("Name of Contact: ")
+        continue
     print("Number: " + contacts.get(f'{contact_name}')[0] + "| Address: " + contacts.get(f'{contact_name}')[1])
 
 #Shows all the contacts and all the values associated with the name (number, address) (address will be none until user adds it)
@@ -50,6 +60,12 @@ def show_contacts():
 #adds address to the value list of a certain key (user indicated)
 def add_address():
     contact_name = input("Name of Contact: ")
+    while contact_name not in contacts:
+        clear_console()
+        print("ERROR: contact does not exist. Try Again.")
+        contact_name = input("Name of Contact: ")
+        continue
+    
     address = input("Address: ")
     contacts[f"{contact_name}"][1] = address
 
@@ -57,21 +73,20 @@ def add_address():
 while user_input != 'quit':
     print_menu()
     user_input = input("Choose Option: ").lower()
+    clear_console()
     if user_input == "add":
-        clear_console()
         add_contact()
     elif user_input == "delete":
-        clear_console()
         delete_contact()
     elif user_input == "view":
-        clear_console()
         view_contact()
     elif user_input == "show":
-        clear_console()
         show_contacts()
-    elif user_input == "address":
-        clear_console()
+    elif user_input == "address":  #TODO:need to check if contact exists
         add_address()
+    else:
+        print("INVALID OPTION: Try Again")
+        continue
     
     
     
