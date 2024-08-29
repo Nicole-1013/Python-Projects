@@ -44,12 +44,12 @@ def delete_contact():
 #Allows the user to view the information of specific contact
 def view_contact():
     contact_name = check_for_contact()
-    print(f"Number: {contacts[contact_name][0]} | Address: {contacts[contact_name][1]}")
+    print(f"|Number: {contacts[contact_name][0]} | Address: {contacts[contact_name][1]}|")
 
 
 #Shows all the contacts and all the values associated with the name (number, address) (address will be none until user adds it)
 def show_contacts():
-    for name,details in contacts.items():
+    for name, details in sorted(contacts.items()):
         print(f'Name: {name} | Number: {details[0]} | Address: {details[1]}')
 
 #modifys the users choice of number, name, or address of a contact
@@ -61,19 +61,17 @@ def modify_contact():
         choice = input("What would you like to modify? (n: name, num: number, a: address) ").lower()
         if choice == "n":
             new_name = input("New name you wish to change this contact to: ")
-            contacts[f"{new_name}"] = contacts[f"{name}"]
-            del contacts[f"{name}"]
+            contacts[f"{new_name}"] = contacts.pop(name)
             break
         elif choice == "num":
-            new_number = input("New number you wish to change this contact to: ")
-            contacts[f"{name}"][0] = new_number
+            contacts[f"{name}"][0] = input("New number you wish to change this contact to: ")
             break
         elif choice == "a":
-            address = input("New Address you wish to change this contact to: ")
-            contacts[f"{name}"][1] = address
+            contacts[f"{name}"][1] = input("New Address you wish to change this contact to: ")
             break
         else:
             print("INVALID OPTION: Try again")
+            clear_console()
             continue
     print("YOU HAVE MODIFIED THIS CONTACT")
 
@@ -87,26 +85,15 @@ def check_for_contact():
 
 
 #main code working the menu and which functions to use
-while user_input != 'q':
+while user_input != 'quit':
     print_menu()
     user_input = input("Choose Option: ").lower()
     clear_console()
-    if user_input == "add":
-        add_contact()
-    elif user_input == "delete":
-        delete_contact()
-    elif user_input == "view":
-        view_contact()
-    elif user_input == "show":
-        show_contacts()
-    elif user_input == "modify":
-        modify_contact()
-    elif user_input == "q":
-        print("EXITED")
-    else:
-        print("INVALID OPTION: Try Again")
-        continue
-    
+    {'add': add_contact, 'delete': delete_contact, 'view': view_contact,
+     'show': show_contacts, 'modify': modify_contact}.get(user_input, 
+     lambda: print("INVALID OPTION, Try Again"))()
+clear_console()
+print("Goodbye, Thank you!")
     
     
 
