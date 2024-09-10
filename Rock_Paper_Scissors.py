@@ -17,19 +17,19 @@ def game(second_user):
     player_1_points = 0
     player_2_points = 0
 
-    if second_user == '2':
-        second_player = "Player 2"
-    else:
-        second_player = "Computer"
+    second_player = "Player 2" if second_user == '2' else "Computer"
     
     while  rounds <=3:
+        clear_console()
         print(f"POINTS :  Player 1: {player_1_points}  |  {second_player}: {player_2_points}")
+        
         player_1 = input("Player 1: Choose Action (Rock: r, Paper: p, Scissors: s)").lower()
         
         if second_user == '2':
             player_2 = input("Player 2: Choose Action (Rock: r, Paper: p, Scissors: s)").lower()
         else:
             player_2 = random.choice(move)
+            print(f"{second_player} chose {player_2}")
 
         
         if player_1 not in move or player_2 not in move:
