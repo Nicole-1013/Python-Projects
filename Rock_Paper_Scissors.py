@@ -4,28 +4,41 @@
 
 import random
 import os
-choice = ["rock", "paper", "scissors"]
+move = ["r", "p", "s"]
 play_again = 'y'
 rounds = 1
 
 def clear_console():
     if os.name == 'nt':
         os.system('cls')
+
 def one_player_game():
-    print()
+    global rounds 
+    player_points = 0
+    computer_points = 0
+    while rounds <= 3:
+        player = input("Choose Action (Rock: r, Paper: p, Scissors: s)").lower()
+        computer = random.choice(move)
+
+
+
+
 def two_player_game():
     global rounds
+    global move
     player_1_points = 0
     player_2_points = 0
     while  rounds <=3:
-        
-        print(str(player_1_points) + " | " + str(player_2_points))
+        print(f"POINTS :  Player 1: {player_1_points}  |  Player 2: {player_2_points}")
         player_1 = input("Player 1: Choose Action (Rock: r, Paper: p, Scissors: s)").lower()
         player_2 = input("Player 2: Choose Action (Rock: r, Paper: p, Scissors: s)").lower()
-       
         
-        
-        
+        if player_1 not in move or player_2 not in move:
+            clear_console()
+            print("INVALID RESPONSE, TRY AGAIN")
+            
+            continue
+
         if player_1 == player_2:
             print("its a Tie!")
             continue
