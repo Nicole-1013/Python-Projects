@@ -20,7 +20,6 @@ def game(second_user):
     second_player = "Player 2" if second_user == '2' else "Computer"
     
     while  rounds <=3:
-        clear_console()
         print(f"POINTS :  Player 1: {player_1_points}  |  {second_player}: {player_2_points}")
         
         player_1 = input("Player 1: Choose Action (Rock: r, Paper: p, Scissors: s)").lower()
