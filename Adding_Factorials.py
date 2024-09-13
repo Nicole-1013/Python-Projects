@@ -1,7 +1,7 @@
 #Description: This program will find the sum of all the factorials of the inputted number
 #Author: Nicole Galvan 
 #Date: 8/14/24
-
+import os 
 factorial = int(input("Input the factorial"))
 #starting inputs of the sum, product, and number list
 sum_of_all = 0
@@ -17,6 +17,8 @@ for x in number_list:
     product *= x
     sum_of_all += product
 
+cwd = os.getcwd()
+print("current direcotry" +cwd)
 print(sum_of_all)
 
 
