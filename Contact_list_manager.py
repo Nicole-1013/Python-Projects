@@ -87,7 +87,7 @@ def check_for_contact():
 
 
 #main code working the menu and which functions to use
-while user_input != 'q':
+while user_input != 'quit':
     print_menu()
     user_input = input("Choose Option: ").lower()
     clear_console()
